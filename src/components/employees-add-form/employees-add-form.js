@@ -19,11 +19,15 @@ class EmployeesAddForm extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.onCreate(this.state.name, this.state.salary);
-        this.setState({
+        if (this.state.name && this.state.salary) {
+            this.props.onCreate(this.state.name, this.state.salary);
+            this.setState({
             name: '',
             salary: ''
-        })
+            })
+        } else {
+            console.log('Empty values')
+        }
     }
 
     render() {
